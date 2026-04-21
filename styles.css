@@ -1,0 +1,276 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    background-color: lightgrey;
+    color: black;
+    line-height: 1.6;
+    padding-bottom: 2rem;
+}
+
+/* Header area */
+header {
+    text-align: center;
+    padding: 0.9rem;
+    background-color: #00274C;
+    color: white;
+    border-bottom: 4px solid #FFCB05;
+    margin-bottom: 1.1rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+}
+
+header p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* logo */
+.header-logo {
+    display: block;
+    margin: 0 auto 0.6rem auto;
+    width: 60px;
+    height: 60px;
+}
+
+/* Hidden titles or texts for screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #00274C;
+    color: white;
+    padding: 8px 16px;
+    z-index: 100;
+    text-decoration: none;
+    font-weight: bold;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #FFCB05;
+    outline-offset: -3px;
+}
+
+*:focus-visible {
+    outline: 3px solid #00274C;
+    outline-offset: 2px;
+}
+
+/* Mobile view */
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+section {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* forms */
+
+fieldset {
+    border: 1px solid darkgrey;
+    border-radius: 6px;
+    padding: 1.5rem 1rem 1rem;
+    margin-bottom: 1.5rem;
+    background-color: whitesmoke;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: #00274C;
+    /* UMich Blue */
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid darkgrey;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #00274C;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* dynamically input entries */
+
+.dynamic-entry {
+    background-color: white;
+    border-left: 4px solid #FFCB05;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    position: relative;
+}
+
+.skill-entry {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.skill-entry input {
+    margin-bottom: 0;
+}
+
+/* buttons */
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-actions button,
+.export-actions button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    background-color: #00274C;
+    color: white;
+    margin-top: 1rem;
+}
+
+.form-actions button:hover,
+.export-actions button:hover:not(:disabled) {
+    background-color: #FFCB05;
+    color: #00274C;
+    /* Switch text to blue for contrast */
+}
+
+.export-actions button:disabled {
+    background-color: darkgrey;
+    color: white;
+    cursor: not-allowed;
+}
+
+.add-btn {
+    background-color: transparent;
+    color: #00274C;
+    border: 2px dashed #00274C;
+    padding: 0.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.add-btn:hover {
+    background-color: lightgrey;
+}
+
+/* Remove Buttons */
+.remove-btn {
+    background-color: brown;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+}
+
+.skill-entry .remove-btn {
+    margin-top: 0;
+}
+
+/* resume preview */
+
+#preview-section h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #00274C;
+}
+
+.resume-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.resume-document {
+    background-color: white;
+    border: 1px solid whitesmoke;
+    min-height: 600px;
+    min-width: 600px;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px black;
+    aspect-ratio: 8.5 / 11;
+}
+
+.placeholder-text {
+    text-align: center;
+    color: black;
+    margin-top: 50%;
+}
+
+/* desktop view */
+
+@media (min-width: 900px) {
+    #main-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    #editor-section {
+        flex: 1;
+        position: sticky;
+        top: 1rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+    }
+
+    #preview-section {
+        flex: 1;
+    }
+}

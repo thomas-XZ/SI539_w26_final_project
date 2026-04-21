@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resume Generator</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+
+        <header>
+            <img src="UMSI_signature_vertical_informal_solidblue.jpg"
+                alt="Logo of School of Information, University of Michigan"
+                class="header-logo">
+            <h1>Resume Generator</h1>
+            <p>Fill out the form, preview, and download your resume.</p>
+        </header>
+
+        <main id="main-content">
+            <section id="editor-section" aria-labelledby="editor-heading">
+                <h2 id="editor-heading" class="visually-hidden">Resume Data
+                    Entry Form</h2>
+                <form id="resume-form">
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName"
+                            placeholder="John Doe" required
+                            aria-required="true">
+                        <!-- The aria- attributes are suggested by Gemini. Prompt: How can I make my table blanks a11y to screen readers? -->
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email"
+                            placeholder="john@example.com" required
+                            aria-required="true">
+
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone"
+                            placeholder="(123) 456-7890">
+
+                        <label for="links">Links (LinkedIn, Github)</label>
+                        <input type="text" id="links" name="links"
+                            placeholder="linkedin.com/in/johndoe"
+                            aria-describedby="links-help">
+                        <span id="links-help" class="visually-hidden">Enter URLs
+                            separated by commas.</span>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Education</legend>
+                        <div id="education-container" aria-live="polite"
+                            aria-atomic="false"></div>
+                        <button type="button" id="add-edu-btn" class="add-btn"
+                            aria-controls="education-container">+ Add
+                            Education</button>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Work Experience</legend>
+                        <div id="experience-container" aria-live="polite"
+                            aria-atomic="false"></div>
+                        <button type="button" id="add-exp-btn" class="add-btn"
+                            aria-controls="experience-container">+ Add
+                            Experience</button>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Skills & Techniques</legend>
+                        <div id="skills-container" aria-live="polite"
+                            aria-atomic="false"></div>
+                        <button type="button" id="add-skill-btn" class="add-btn"
+                            aria-controls="skills-container">+ Add
+                            Skill</button>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit" id="generate-btn"
+                            aria-controls="resume-output">Generate
+                            Preview</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="preview-section" aria-labelledby="preview-heading">
+                <h2 id="preview-heading">Resume Preview</h2>
+                <div class="resume-scroll-wrapper">
+                    <div id="resume-output" class="resume-document"
+                        aria-live="polite">
+                        <p class="placeholder-text">Your generated resume will
+                            appear here...</p>
+                    </div>
+                </div>
+                <div class="export-actions">
+                    <button type="button" id="download-btn" disabled
+                        aria-disabled="true">Download Resume</button>
+                </div>
+            </section>
+        </main>
+
+        <template id="edu-template">
+            <div class="dynamic-entry" role="group"
+                aria-label="Education Entry">
+                <input type="text" class="edu-school"
+                    placeholder="School / University"
+                    aria-label="School or University name" required>
+                <input type="text" class="edu-degree"
+                    placeholder="Degree (e.g., BS Computer Science)"
+                    aria-label="Degree or Certification" required>
+                <input type="text" class="edu-year"
+                    placeholder="Years (e.g., 2018 - 2022)"
+                    aria-label="Years attended">
+                <button type="button" class="remove-btn"
+                    aria-label="Remove this education entry">Remove</button>
+            </div>
+        </template>
+
+        <template id="exp-template">
+            <div class="dynamic-entry" role="group"
+                aria-label="Work Experience Entry">
+                <input type="text" class="exp-company"
+                    placeholder="Company Name" aria-label="Company Name"
+                    required>
+                <input type="text" class="exp-title" placeholder="Job Title"
+                    aria-label="Job Title" required>
+                <input type="text" class="exp-duration"
+                    placeholder="Duration (e.g., Jan 2020 - Present)"
+                    aria-label="Employment Duration">
+                <textarea class="exp-desc"
+                    placeholder="Job description and achievements..."
+                    aria-label="Job description and achievements"></textarea>
+                <button type="button" class="remove-btn"
+                    aria-label="Remove this work experience entry">Remove</button>
+            </div>
+        </template>
+
+        <template id="skill-template">
+            <div class="dynamic-entry skill-entry" role="group"
+                aria-label="Skill Entry">
+                <input type="text" class="skill-input"
+                    placeholder="Skill (e.g., JavaScript, React)"
+                    aria-label="Skill name" required>
+                <button type="button" class="remove-btn"
+                    aria-label="Remove this skill">Remove</button>
+            </div>
+        </template>
+
+        <script src="script.js"></script>
+    </body>
+</html>
